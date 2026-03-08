@@ -6,7 +6,7 @@ function createWindow() {
     width: 1000,
     height: 600
   });
-  win.loadFile(path.join(__dirname, "../renderer/simple.html"));
+  win.loadFile(path.join(__dirname, "../renderer/index.html"));
 }
 
 app.whenReady().then(createWindow);
