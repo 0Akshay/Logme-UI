@@ -4,7 +4,7 @@ const path = require("path");
 function createWindow() {
   const win = new BrowserWindow({
     width: 1000,
-    height: 600
+    height: 700
   });
   win.loadFile(path.join(__dirname, "../renderer/index.html"));
 }

@@ -6,7 +6,7 @@ body {
 
 .app {
     display: flex;
-    height: 600px;
+    height: 550px;
 }
 
 .header {
@@ -32,13 +32,26 @@ body {
 
 .messages-area {
     background-color: #ffffff;
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     height: 350px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.messages-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 20px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: #666;
 }
 
 .message {
@@ -47,7 +60,7 @@ body {
     border-radius: 20px;
     margin-bottom: 8px;
     width: fit-content;
-    max-width: 70%;
+    max-width: 60%;
     overflow-wrap: break-word;
     font-size: 15px;
 }
