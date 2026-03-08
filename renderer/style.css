@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+.chat-panel {
+    width: 350px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-area {
+    flex: 1;
+    padding: 20px;
+}
