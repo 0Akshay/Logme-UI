@@ -11,17 +11,18 @@
         </div>
         <div class="app">
             <div class="chat-panel">
-                <div class="messages-area">
+                <div class="messages-area" id="messagesArea">
 
                 </div>
                 <div class="input-area">
-                    <input type="text" id="inputField">
-                    <button id="sendButton">Send</button>
+                    <input type="text" id="inputField" placeholder="Describe your timelog">
+                    <button id="sendButton" onclick="handleSubmit()">Send</button>
                 </div>
             </div>
             <div class="main-area">
                 
             </div>
         </div>
+        <script src="renderer.js"></script>
     </body>
 </html>
