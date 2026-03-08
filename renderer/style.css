@@ -38,7 +38,7 @@ body {
     flex-direction: column;
     height: 350px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .messages-area::-webkit-scrollbar {

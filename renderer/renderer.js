@@ -7,6 +7,18 @@ inputField.addEventListener("keydown", function(event) {
     }
 });
 
+setTimeout(() => {
+    const newAgentMessage = document.createElement("div");
+    newAgentMessage.textContent = "Hi! I am Logme. What did you work on today?";
+    newAgentMessage.classList.add("message", "agent-message");
+    messagesArea.appendChild(newAgentMessage);
+    
+    messagesArea.scrollTo({
+        top: messagesArea.scrollHeight - messagesArea.clientHeight,
+        behavior: "smooth"
+    });
+}, 500);
+
 function handleSubmit() {
     const text = inputField.value.trim();
 
