@@ -63,6 +63,12 @@ body {
     max-width: 60%;
     overflow-wrap: break-word;
     font-size: 15px;
+    cursor: default;
+}
+
+.message:hover {
+    transform: scale(1.03);
+    transition: transform 0.1s;
 }
 
 .user-message {
@@ -140,10 +146,14 @@ body {
 
 #inputField:hover {
     border: 1px solid  rgb(209, 184, 138);
+    transform: scale(1.05);
+    transition: transform 0.1s;
 }
 
 #inputField:focus {
     border: 1px solid  rgb(209, 184, 138);
+    transform: scale(1.05);
+    transition: transform 0.1s;
 }
 
 #sendButton {
@@ -160,6 +170,8 @@ body {
 #sendButton:hover {
     cursor: pointer;
     background-color: rgb(0, 90, 0);
+    scale: 1.05;
+    transition: scale 0.1s ease-in-out;
 }
 
 #sendButton:active {

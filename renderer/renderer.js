@@ -1,6 +1,7 @@
 const inputField = document.getElementById('inputField');
 const messagesArea = document.getElementById("messagesArea");
-let history_messages = []
+// const sendButton = document.getElementById("sendButton");
+let history_messages = [];
 
 inputField.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
@@ -13,6 +14,10 @@ setTimeout(() => {
     scrollToBottom();
 }, 500);
 
+setTimeout(() => {
+    inputField.focus();
+}, 1000);
+
 async function handleSubmit() {
     const text = inputField.value.trim();
 
@@ -20,6 +25,9 @@ async function handleSubmit() {
         inputField.value = "";
         return;
     }
+
+    inputField.blur();
+    // lockInput();
 
     addNewMessage("user", text);
 
@@ -65,6 +73,8 @@ async function handleSubmit() {
     }
 
     scrollToBottom();
+    inputField.focus();
+    // releaseInput();
 }
 
 function addNewMessage(type, message) {
@@ -95,3 +105,13 @@ function removeLoader() {
     const loaderWrapper = document.getElementById("loaderWrapper");
     loaderWrapper.remove();
 }
+
+// function lockInput() {
+//     inputField.disabled = true;
+//     sendButton.disabled = true;
+// }
+
+// function releaseInput() {
+//     inputField.disabled = false;
+//     sendButton.disabled = true;
+// }
