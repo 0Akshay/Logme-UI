@@ -75,6 +75,45 @@ body {
     align-self: flex-start;
 }
 
+
+#loaderWrapper {
+    min-height: 60px;
+}
+
+#loader {
+    opacity: 0;
+    margin-left: 5px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: rgb(179, 64, 224);
+    animation: fadeIn 0.5s ease 0.5s forwards, moveLoader 2.5s ease-in-out 1s infinite;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveLoader {
+    0% {
+        height: 16px;
+        width: 16px;
+    }
+    50% {
+        height: 25px;
+        width: 25px;
+    }
+    100% {
+        height: 16px;
+        width: 16px;
+    }
+}
+
 .input-area {
     display: flex;
     flex-direction: row;

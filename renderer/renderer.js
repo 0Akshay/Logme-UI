@@ -10,26 +10,31 @@ inputField.addEventListener("keydown", function(event) {
 
 setTimeout(() => {
     addNewMessage("agent", "Hi! I am Logme. What would you like to log today?");
-    
-    messagesArea.scrollTo({
-        top: messagesArea.scrollHeight - messagesArea.clientHeight,
-        behavior: "smooth"
-    });
+    scrollToBottom();
 }, 500);
 
 async function handleSubmit() {
     const text = inputField.value.trim();
 
-    if (text == "") return;
+    if (text == "") {
+        inputField.value = "";
+        return;
+    }
 
     addNewMessage("user", text);
 
     history_messages.push({"role": "user", "content": text});
     
     inputField.value = "";
-
-    scrollToBottom();
     
+    // scrollToBottom();
+    
+    addLoader();
+
+    setTimeout(() => {
+        scrollToBottom();
+    });
+
     const response = await fetch("http://127.0.0.1:8000/logme", {
         method: "POST",
         headers: {
@@ -40,6 +45,8 @@ async function handleSubmit() {
         })
     });
     
+    removeLoader();
+
     const data = await response.json();
     console.log(data);
     history_messages.push({"role": "assistant", "content": JSON.stringify(data)});
@@ -73,4 +80,18 @@ function scrollToBottom() {
         top: messagesArea.scrollHeight - messagesArea.clientHeight,
         behavior: "smooth"
     });
+}
+
+function addLoader() {
+    const loaderWrapper = document.createElement("div");
+    loaderWrapper.id = "loaderWrapper";
+    const loader = document.createElement("div");
+    loader.id = "loader";
+    loaderWrapper.appendChild(loader);
+    messagesArea.append(loaderWrapper);
+}
+
+function removeLoader() {
+    const loaderWrapper = document.getElementById("loaderWrapper");
+    loaderWrapper.remove();
 }
