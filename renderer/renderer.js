@@ -3,7 +3,7 @@ const messagesArea = document.getElementById("messagesArea");
 // const sendButton = document.getElementById("sendButton");
 let history_messages = [];
 
-inputField.addEventListener("keydown", function(event) {
+inputField.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         handleSubmit();
     }
@@ -31,12 +31,12 @@ async function handleSubmit() {
 
     addNewMessage("user", text);
 
-    history_messages.push({"role": "user", "content": text});
-    
+    history_messages.push({ "role": "user", "content": text });
+
     inputField.value = "";
-    
+
     // scrollToBottom();
-    
+
     addLoader();
 
     setTimeout(() => {
@@ -52,12 +52,12 @@ async function handleSubmit() {
             data: JSON.stringify(history_messages)
         })
     });
-    
+
     removeLoader();
 
     const data = await response.json();
     console.log(data);
-    history_messages.push({"role": "assistant", "content": JSON.stringify(data)});
+    history_messages.push({ "role": "assistant", "content": JSON.stringify(data) });
 
     // addNewMessage("agent", data.date + " " + data.project_name + " " + data.type + " " + data.description + " " + data.hours_spent);
 
@@ -68,6 +68,8 @@ async function handleSubmit() {
     }
     else {
         history_messages = []
+        addNewMessage("agent", "Saving...");
+        saveNewTimelog(data);
         addNewMessage("agent", "Saved.")
         addNewMessage("agent", "What else did you work on?")
     }
@@ -115,3 +117,13 @@ function removeLoader() {
 //     inputField.disabled = false;
 //     sendButton.disabled = true;
 // }
+
+function saveNewTimelog(timelogData) {
+    const date = timelogData["date"];
+    const project_name = timelogData["project_name"];
+    const type = timelogData["type"];
+    const description = timelogData["description"];
+    const hours_spent = timelogData["hours_spent"];
+
+    const id = window.api.addTimelog(date, project_name, type, description, hours_spent);
+}
