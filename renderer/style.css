@@ -9,10 +9,15 @@ body {
     height: 500px;
 }
 
+.title-bar {
+    height: 42px;
+    -webkit-app-region: drag;
+}
+
 .header {
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 30px;
+    padding-top: 0px;
     /* -webkit-app-region: drag; */
 }
 
@@ -29,6 +34,7 @@ body {
     position: absolute;
     top: 14px;
     right: 16px;
+    -webkit-app-region: no-drag;
 }
 
 .ctrl-btn {
