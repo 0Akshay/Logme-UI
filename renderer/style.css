@@ -6,18 +6,57 @@ body {
 
 .app {
     display: flex;
-    height: 550px;
+    height: 500px;
 }
 
 .header {
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
+    /* -webkit-app-region: drag; */
 }
 
 #heading {
     margin: 0px;
 }
+
+.ctrl-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+    position: absolute;
+    top: 14px;
+    right: 16px;
+}
+
+.ctrl-btn {
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+}
+
+.ctrl-btn:hover {
+    scale: 1.1;
+}
+
+.devtools-btn {
+    background-color: rgb(96, 96, 96);
+}
+
+.minimize-btn {
+    background-color: rgb(59, 113, 14);
+}
+
+.maximize-btn {
+    background-color: rgb(193, 191, 28);
+}
+
+.close-btn {
+    background-color: rgb(177, 35, 35);
+}
+
 
 .chat-panel {
     width: 350px;
@@ -100,6 +139,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -110,10 +150,12 @@ body {
         height: 16px;
         width: 16px;
     }
+
     50% {
         height: 25px;
         width: 25px;
     }
+
     100% {
         height: 16px;
         width: 16px;
@@ -140,18 +182,18 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
-    border: 1px solid  rgb(252, 233, 197);
+    border: 1px solid rgb(252, 233, 197);
     font-size: 16px;
 }
 
 #inputField:hover {
-    border: 1px solid  rgb(209, 184, 138);
+    border: 1px solid rgb(209, 184, 138);
     transform: scale(1.05);
     transition: transform 0.1s;
 }
 
 #inputField:focus {
-    border: 1px solid  rgb(209, 184, 138);
+    border: 1px solid rgb(209, 184, 138);
     transform: scale(1.05);
     transition: transform 0.1s;
 }

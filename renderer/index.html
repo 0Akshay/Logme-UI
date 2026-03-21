@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Logme</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="header">
-            <h1 id="heading">Logme</h1>
-        </div>
-        <div class="app">
-            <div class="chat-panel">
-                <div class="messages-area-wrapper">
-                    <div class="messages-area" id="messagesArea"></div>
-                </div>
-                <div class="input-area">
-                    <input type="text" id="inputField" placeholder="Describe your timelog">
-                    <button id="sendButton" onclick="handleSubmit()">Send</button>
-                </div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="ctrl-btns">
+        <div class="devtools-btn ctrl-btn" id="devtoolsBtn" onclick="openDeveloperTools()"></div>
+        <div class="minimize-btn ctrl-btn" onclick="handleMinimize()"></div>
+        <div class="maximize-btn ctrl-btn" id="maximizeBtn" onclick="handleMaximize()"></div>
+        <div class="close-btn ctrl-btn" onclick="handleClose()"></div>
+    </div>
+    <div class="header">
+        <h1 id="heading">Logme</h1>
+    </div>
+    <div class="app">
+        <div class="chat-panel">
+            <div class="messages-area-wrapper">
+                <div class="messages-area" id="messagesArea"></div>
             </div>
-            <div class="main-area">
-                
+            <div class="input-area">
+                <input type="text" id="inputField" placeholder="Describe your timelog">
+                <button id="sendButton" onclick="handleSubmit()">Send</button>
             </div>
         </div>
-        <script src="renderer.js"></script>
-    </body>
+        <div class="main-area">
+
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
 </html>

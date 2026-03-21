@@ -127,3 +127,19 @@ function saveNewTimelog(timelogData) {
 
     const id = window.api.addTimelog(date, project_name, type, description, hours_spent);
 }
+
+function openDeveloperTools() {
+    window.api.openDevTools();
+}
+
+function handleMinimize() {
+    window.api.minimize();
+}
+
+function handleMaximize() {
+    window.api.maximize();
+}
+
+function handleClose() {
+    window.api.close();
+}
