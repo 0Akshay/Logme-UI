@@ -119,13 +119,7 @@ function removeLoader() {
 // }
 
 function saveNewTimelog(timelogData) {
-    const date = timelogData["date"];
-    const project_name = timelogData["project_name"];
-    const type = timelogData["type"];
-    const description = timelogData["description"];
-    const hours_spent = timelogData["hours_spent"];
-
-    const id = window.api.addTimelog(date, project_name, type, description, hours_spent);
+    const id = window.api.addLog(timelogData);
 }
 
 function openDeveloperTools() {
