@@ -7,6 +7,7 @@ body {
 .app {
     display: flex;
     height: 500px;
+    overflow: hidden;
 }
 
 .title-bar {
@@ -65,7 +66,8 @@ body {
 
 
 .chat-panel {
-    width: 350px;
+    width: 330px;
+    min-width: 330px;
     /* border-right: 1px solid #ddd; */
     display: flex;
     flex-direction: column;
@@ -227,6 +229,56 @@ body {
 }
 
 .main-area {
-    flex: 1;
-    padding: 20px;
+    padding: 20px 30px 20px 20px;
+    height: 400px;
+    width: 100%;
+    height: 460px;
+    /* background-color: #999; */
+}
+
+.main-area-card {
+    /* background-color: white; */
+    height: 100%;
+    /* border: 1px solid black; */
+    border-radius: 12px;
+    overflow-y: scroll;
+}
+
+.main-area-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-area-card::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 20px;
+}
+
+.main-area-card::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.timelog {
+    margin-bottom: 10px;
+    height: 60px;
+    background-color: rgb(155, 186, 190);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.timelog-spec {
+    background-color: rgb(107, 128, 131);
+    min-width: 80px;
+    max-width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 6px;
+    text-align: center;
+    /* font-size: 10px; */
+    overflow: hidden;
 }

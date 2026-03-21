@@ -18,6 +18,8 @@ setTimeout(() => {
     inputField.focus();
 }, 1000);
 
+renderTimeLogs();
+
 async function handleSubmit() {
     const text = inputField.value.trim();
 
@@ -71,6 +73,7 @@ async function handleSubmit() {
         addNewMessage("agent", "Saving...");
         saveNewTimelog(data);
         addNewMessage("agent", "Saved.")
+        renderTimeLogs();
         addNewMessage("agent", "What else did you work on?")
     }
 
@@ -136,4 +139,44 @@ function handleMaximize() {
 
 function handleClose() {
     window.api.close();
+}
+
+function renderTimeLog(data) {
+    const timelogView = document.getElementById('timelogView');
+    const timelog = document.createElement('div');
+    timelog.classList.add('timelog');
+
+    const dateDiv = document.createElement('div');
+    dateDiv.classList.add('timelog-spec');
+    dateDiv.innerText = data?.date || "Date";
+    const taskDiv = document.createElement('div');
+    taskDiv.classList.add('timelog-spec');
+    taskDiv.innerText = data?.description || "Task";
+    const projectDiv = document.createElement('div');
+    projectDiv.classList.add('timelog-spec');
+    projectDiv.innerText = data?.project_name || "Project";
+    const typeDiv = document.createElement('div');
+    typeDiv.classList.add('timelog-spec');
+    typeDiv.innerText = data?.type || "Type";
+    const hoursDiv = document.createElement('div');
+    hoursDiv.classList.add('timelog-spec');
+    hoursDiv.innerText = data?.hours_spent || "Time";
+
+    timelog.appendChild(dateDiv);
+    timelog.appendChild(taskDiv);
+    timelog.appendChild(projectDiv);
+    timelog.appendChild(typeDiv);
+    timelog.appendChild(hoursDiv);
+
+    timelogView.appendChild(timelog);
+}
+
+async function renderTimeLogs() {
+    const timelogs = await window.api.getLogs();
+    const timelogView = document.getElementById('timelogView');
+    timelogView.innerHTML = "";
+    timelogs.forEach((timelog) => {
+        console.log(timelog);
+        renderTimeLog(timelog);
+    });
 }
