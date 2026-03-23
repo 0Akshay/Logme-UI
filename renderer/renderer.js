@@ -180,3 +180,8 @@ async function renderTimeLogs() {
         renderTimeLog(timelog);
     });
 }
+
+async function handleExport() {
+    const filePath = await window.api.exportExcel();
+    alert("Saved at: " + filePath);
+}

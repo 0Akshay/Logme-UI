@@ -8,5 +8,6 @@ contextBridge.exposeInMainWorld("api", {
     openDevTools: () => ipcRenderer.send("open-devtools"),
     minimize: () => ipcRenderer.send("minimize"),
     maximize: () => ipcRenderer.send("maximize"),
-    close: () => ipcRenderer.send("close")
+    close: () => ipcRenderer.send("close"),
+    exportExcel: () => ipcRenderer.invoke("export-excel")
 });

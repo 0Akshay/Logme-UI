@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const { initDB, getDB } = require("./database/db");
+const XLSX = require("xlsx");
 
 function createWindow() {
 
@@ -63,6 +64,31 @@ ipcMain.on("maximize", (event) => {
 
 ipcMain.on("close", (event) => {
     BrowserWindow.fromWebContents(event.sender).close();
+});
+
+
+ipcMain.handle("export-excel", async () => {
+    try {
+        const db = getDB();
+        const rows = db.prepare("SELECT * FROM timelogs").all();
+
+        // Convert to Excel
+        const worksheet = XLSX.utils.json_to_sheet(rows);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Timelog");
+
+        // File path 
+        const filePath = path.join(app.getPath("downloads"), "Timelogs.xlsx");
+
+        // Write file
+        XLSX.writeFile(workbook, filePath);
+
+        return filePath;
+    }
+    catch (err) {
+        console.error(err);
+        throw err;
+    }
 });
 
 app.whenReady().then(() => {

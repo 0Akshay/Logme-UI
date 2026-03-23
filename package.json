@@ -14,7 +14,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "better-sqlite3": "^12.8.0"
+    "better-sqlite3": "^12.8.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "electron": "^41.0.2",
