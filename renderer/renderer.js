@@ -73,7 +73,9 @@ async function handleSubmit() {
         addNewMessage("agent", "Saving...");
         saveNewTimelog(data);
         addNewMessage("agent", "Saved.")
-        renderTimeLogs();
+        await renderTimeLogs();
+        scrollTimelogsToBottom();
+        highlightLastLog();
         addNewMessage("agent", "What else did you work on?")
     }
 
@@ -184,4 +186,21 @@ async function renderTimeLogs() {
 async function handleExport() {
     const filePath = await window.api.exportExcel();
     alert("Saved at: " + filePath);
+}
+
+function scrollTimelogsToBottom() {
+    const timelogs = document.getElementById("timelogView");
+    timelogs.scrollTo({
+        top: timelogs.scrollHeight - timelogs.clientHeight,
+        behavior: "smooth"
+    });
+}
+
+function highlightLastLog() {
+    const timelogs = document.getElementById("timelogView");
+    latestTimelog = timelogs.lastChild
+    latestTimelog.classList.add("highlight-log");
+    setTimeout(() => {
+        latestTimelog.classList.remove("highlight-log");
+    }, 5000);
 }

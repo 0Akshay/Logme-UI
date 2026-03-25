@@ -302,6 +302,17 @@ body {
     justify-content: space-between;
     padding-right: 20px;
     padding-left: 20px;
+    transition: background-color 1s ease-in-out;
+}
+
+.timelog.highlight-log {
+    background-color: rgb(179, 64, 224);
+}
+
+.timelog.highlight-log .timelog-spec {
+    background-color: rgb(179, 64, 224);
+    color: #FFFFFF;
+    background-color: rgb(127, 46, 159);
 }
 
 .timelog-spec {
@@ -314,4 +325,5 @@ body {
     text-align: center;
     /* font-size: 10px; */
     overflow: hidden;
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
 }
