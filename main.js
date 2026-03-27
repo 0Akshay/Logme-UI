@@ -72,14 +72,44 @@ ipcMain.on("close", (event) => {
     BrowserWindow.fromWebContents(event.sender).close();
 });
 
+function formatDate(dateStr) {
+    if (!dateStr) return '';
+    try {
+        const date = new Date(dateStr);
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+
+        return `${day}-${month}-${year}`;
+
+    } catch (err) {
+        return '';
+    }
+}
 
 ipcMain.handle("export-excel", async () => {
     try {
         const db = getDB();
         const rows = db.prepare("SELECT * FROM timelogs").all();
 
+        const formattedRows = rows.map(row => ({
+            "Project Name": row.Project_Name,
+            "Job Name": row.Job_Name,
+            "Work Item": row.Work_Item,
+            "Mail Id": row.Mail_Id,
+            "Employee Id": row.Employee_Id,
+            "Date": formatDate(row.Date),
+            "From Time": row.From_Time,
+            "To Time": row.To_Time,
+            "Hours": row.Hours,
+            "Sub Task": row.Sub_Task,
+            "Billable Status": row.Billable_Status
+        }));
+
         // Convert to Excel
-        const worksheet = XLSX.utils.json_to_sheet(rows);
+        const worksheet = XLSX.utils.json_to_sheet(formattedRows);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Timelog");
 
