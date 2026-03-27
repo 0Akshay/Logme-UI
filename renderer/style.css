@@ -111,6 +111,7 @@ body {
     overflow-wrap: break-word;
     font-size: 15px;
     cursor: default;
+    white-space: pre-line;
 }
 
 .message:hover {

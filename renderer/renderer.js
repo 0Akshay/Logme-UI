@@ -10,7 +10,7 @@ inputField.addEventListener("keydown", function (event) {
 });
 
 setTimeout(() => {
-    addNewMessage("agent", "Hi! I am Logme. What would you like to log today?");
+    addNewMessage("agent", "Hi! Please tell me the following: Your task, Hours spent, Billablitlity, Project, Task type");
     scrollToBottom();
 }, 500);
 
