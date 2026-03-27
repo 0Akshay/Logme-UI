@@ -30,15 +30,16 @@ ipcMain.handle("add-log", (event, data) => {
     const db = getDB();
     console.log("Add log called");
 
-    const stmt = db.prepare("INSERT INTO timelogs (date, project_name, type, description, hours_spent) VALUES (?, ?, ?, ?, ?)");
+    const stmt = db.prepare("INSERT INTO timelogs (date, project_name, type, description, hours_spent, billability) VALUES (?, ?, ?, ?, ?, ?)");
 
     const date = data["date"];
     const project_name = data["project_name"];
     const type = data["type"];
     const description = data["description"];
     const hours_spent = data["hours_spent"];
+    const billability = data["billability"];
 
-    const result = stmt.run(date, project_name, type, description, hours_spent);
+    const result = stmt.run(date, project_name, type, description, hours_spent, billability);
 
     return result.lastInsertRowid;
 });

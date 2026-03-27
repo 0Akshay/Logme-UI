@@ -163,12 +163,16 @@ function renderTimeLog(data) {
     const hoursDiv = document.createElement('div');
     hoursDiv.classList.add('timelog-spec');
     hoursDiv.innerText = data?.hours_spent || "Time";
+    const billabilityDiv = document.createElement('div');
+    billabilityDiv.classList.add('timelog-spec');
+    billabilityDiv.innerText = data?.billability || "Billbility";
 
     timelog.appendChild(dateDiv);
     timelog.appendChild(taskDiv);
     timelog.appendChild(projectDiv);
     timelog.appendChild(typeDiv);
     timelog.appendChild(hoursDiv);
+    timelog.appendChild(billabilityDiv);
 
     timelogView.appendChild(timelog);
 }
@@ -178,7 +182,7 @@ async function renderTimeLogs() {
     const timelogView = document.getElementById('timelogView');
     timelogView.innerHTML = "";
     timelogs.forEach((timelog) => {
-        console.log(timelog);
+        // console.log(timelog);
         renderTimeLog(timelog);
     });
 }

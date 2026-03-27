@@ -14,7 +14,8 @@ function initDB(app) {
         project_name TEXT,
         type TEXT,
         description TEXT,
-        hours_spent TEXT
+        hours_spent TEXT,
+        billability TEXT
     )
     `).run();
 
