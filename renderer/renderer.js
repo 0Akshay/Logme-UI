@@ -148,26 +148,26 @@ function renderTimeLog(data) {
     const timelog = document.createElement('div');
     timelog.classList.add('timelog');
 
-    const dateDiv = document.createElement('div');
-    dateDiv.classList.add('timelog-spec');
-    dateDiv.innerText = data?.date || "Date";
+    // const dateDiv = document.createElement('div');
+    // dateDiv.classList.add('timelog-spec');
+    // dateDiv.innerText = data?.date || "Date";
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('timelog-spec');
-    taskDiv.innerText = data?.description || "Task";
+    taskDiv.innerText = data?.Sub_Task || "Task";
     const projectDiv = document.createElement('div');
     projectDiv.classList.add('timelog-spec');
-    projectDiv.innerText = data?.project_name || "Project";
+    projectDiv.innerText = data?.Project_Name || "Project";
     const typeDiv = document.createElement('div');
     typeDiv.classList.add('timelog-spec');
-    typeDiv.innerText = data?.type || "Type";
+    typeDiv.innerText = data?.Work_Item || "Type";
     const hoursDiv = document.createElement('div');
     hoursDiv.classList.add('timelog-spec');
-    hoursDiv.innerText = data?.hours_spent || "Time";
+    hoursDiv.innerText = data?.Hours || "Time";
     const billabilityDiv = document.createElement('div');
     billabilityDiv.classList.add('timelog-spec');
-    billabilityDiv.innerText = data?.billability || "Billbility";
+    billabilityDiv.innerText = data?.Billable_Status || "Billbility";
 
-    timelog.appendChild(dateDiv);
+    // timelog.appendChild(dateDiv);
     timelog.appendChild(taskDiv);
     timelog.appendChild(projectDiv);
     timelog.appendChild(typeDiv);

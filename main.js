@@ -30,16 +30,21 @@ ipcMain.handle("add-log", (event, data) => {
     const db = getDB();
     console.log("Add log called");
 
-    const stmt = db.prepare("INSERT INTO timelogs (date, project_name, type, description, hours_spent, billability) VALUES (?, ?, ?, ?, ?, ?)");
+    const stmt = db.prepare("INSERT INTO timelogs (Project_Name, Job_Name, Work_Item, Mail_Id, Employee_ID, Date, From_Time, To_Time, Hours, Sub_Task, Billable_Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    const date = data["date"];
-    const project_name = data["project_name"];
-    const type = data["type"];
-    const description = data["description"];
-    const hours_spent = data["hours_spent"];
-    const billability = data["billability"];
+    const projectName = data["project_name"];
+    const jobName = data["project_name"];
+    const workItem = data["type"];
+    const mailId = "akshay.singh@rstartec.com";
+    const employeeId = "";
+    const Date = data["date"];
+    const fromTime = "";
+    const toTime = "";
+    const hours = data["hours_spent"];
+    const subTask = data["description"];
+    const billableStatus = data["billability"];
 
-    const result = stmt.run(date, project_name, type, description, hours_spent, billability);
+    const result = stmt.run(projectName, jobName, workItem, mailId, employeeId, Date, fromTime, toTime, hours, subTask, billableStatus);
 
     return result.lastInsertRowid;
 });

@@ -9,13 +9,18 @@ function initDB(app) {
     console.log(dbPath);
     db.prepare(`
         CREATE TABLE IF NOT EXISTS timelogs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        date TEXT,
-        project_name TEXT,
-        type TEXT,
-        description TEXT,
-        hours_spent TEXT,
-        billability TEXT
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Project_Name TEXT,
+            Job_Name TEXT,
+            Work_Item TEXT,
+            Mail_Id TEXT,
+            Employee_Id TEXT,
+            Date TEXT,
+            From_Time TEXT,
+            To_Time TEXT,
+            Hours TEXT,
+            Sub_Task TEXT,
+            Billable_Status TEXT
     )
     `).run();
 
