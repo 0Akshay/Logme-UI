@@ -188,8 +188,12 @@ async function renderTimeLogs() {
 }
 
 async function handleExport() {
-    const filePath = await window.api.exportExcel();
-    alert("Saved at: " + filePath);
+    try {
+        const filePath = await window.api.exportExcel();
+        alert("Successfully exported at: " + filePath);
+    } catch (err) {
+        alert("Failed to export! File may be open, please close and try again");
+    }
 }
 
 function scrollTimelogsToBottom() {
